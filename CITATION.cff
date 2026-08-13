@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this code or results, please cite the paper."
+type: software
+title: "S4DR: Structural Candidate Library for Daily Forecasting — Public Reproducibility Repository"
+abstract: >
+  Public reproducibility code for 'Specialization Headroom in Structural Candidate Libraries:
+  A Three-Domain Empirical Analysis of Selector Limitations'.
+  Contains the 12-candidate structural S4DR model, benchmark runners for M5/LD2011/Wikipedia,
+  and pre-computed manuscript data.
+repository-code: "https://github.com/DrDavidR/forecast-S4DR"
+license: Apache-2.0
+version: "1.0.0"
+date-released: "2026-08-13"
+keywords:
+  - time series forecasting
+  - ensemble methods
+  - model selection
+  - headroom decomposition
+  - causal evaluation
+  - structural models
+  - M5 competition
+  - electricity forecasting
+  - Wikipedia traffic

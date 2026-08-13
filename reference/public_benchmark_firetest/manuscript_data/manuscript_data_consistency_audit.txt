@@ -1,0 +1,308 @@
+========================================================================
+MANUSCRIPT DATA CONSISTENCY AUDIT
+PHASE_ID = FINAL_STATISTICAL_CONSISTENCY_AND_PUBLIC_REPRO_RELEASE
+AUDIT_DATE = 2026-08-13
+AUDITOR = AUTOMATED_CROSS_REFERENCE
+========================================================================
+
+CANONICAL CONVENTIONS:
+  dMAE(method) = MAE_method - MAE_L0
+    negative = method favorable vs L0
+    positive = method worse than L0
+  RBC = (W_plus - W_minus) / (W_plus + W_minus)
+    where W_plus  = sum of ranks where d_i = MAE(L0,i) - MAE(comparator,i) > 0
+                  = comparator-better cases
+          W_minus = sum of ranks where d_i < 0 = L0-better cases
+    negative = L0 favorable
+    positive  = comparator favorable
+
+========================================================================
+SECTION 1: FORECAST METRICS CROSS-REFERENCE
+========================================================================
+
+Source A: master_results_table.csv (authoritative)
+Source B: evidence_pack.md (human-readable summary)
+Source C: headroom_ladder.csv (decomposition table)
+
+---- M5_STORE_DEPT ----
+
+CHECK: M5 L0 MICRO_MAE
+  SOURCE_A: master_results_table.csv row M5_STORE_DEPT,L0  → 74.44309717338712
+  SOURCE_B: evidence_pack.md "L0 (BL1_S4DR) MICRO_MAE = 74.4431"
+  EXPECTED: 74.4431 (4dp)
+  PASS_FAIL: PASS
+
+CHECK: M5 L4 MICRO_MAE
+  SOURCE_A: master_results_table.csv row M5_STORE_DEPT,L4  → 71.91651405293368
+  SOURCE_B: evidence_pack.md "L4S (cross-fit) MICRO_MAE = 74.8836" [L4 not in evidence_pack separately]
+  NOTE: L4 is in master_results_table only; evidence_pack correctly shows L4S separately
+  PASS_FAIL: PASS (no contradiction)
+
+CHECK: M5 L4S MICRO_MAE
+  SOURCE_A: master_results_table.csv → 74.88363785905612
+  SOURCE_B: evidence_pack.md "L4S (cross-fit) MICRO_MAE = 74.8836"
+  PASS_FAIL: PASS
+
+CHECK: M5 L5 MICRO_MAE
+  SOURCE_A: master_results_table.csv → 32.915334375637755
+  SOURCE_B: evidence_pack.md "L5 (oracle) MICRO_MAE = 32.9153"
+  PASS_FAIL: PASS
+
+CHECK: M5 SC MICRO_MAE
+  SOURCE_A: master_results_table.csv → 76.45596938274242
+  SOURCE_B: evidence_pack.md "SC (M6_PRED) MICRO_MAE = 76.4560"
+  PASS_FAIL: PASS
+
+CHECK: M5 LIBRARY_RETROSPECTIVE_HEADROOM
+  FORMULA: L5_MAE - L0_MAE = 32.9153 - 74.4431 = -41.5278
+  SOURCE_A: manuscript_report.txt "LIBRARY_RETROSPECTIVE_HEADROOM = -41.5278 (-55.8%)"
+  SOURCE_B: evidence_pack.md "L5 (oracle) MICRO_MAE = 32.9153, L0=74.4431"
+  COMPUTED: 32.915334375637755 - 74.44309717338712 = -41.527762797749365
+  PASS_FAIL: PASS
+
+CHECK: M5 STATIC_RETROSPECTIVE_SPECIALIZATION
+  FORMULA: L4_MAE - L0_MAE = 71.9165 - 74.4431 = -2.5266
+  SOURCE_A: manuscript_report.txt "STATIC_RETROSPECTIVE_SPECIALIZATION = -2.5266 (-3.4%)"
+  COMPUTED: 71.91651405293368 - 74.44309717338712 = -2.52658312045344
+  PASS_FAIL: PASS
+
+CHECK: M5 BIAS_CORRECTED_SPECIALIZATION
+  FORMULA: L4S_MAE - L0_MAE = 74.8836 - 74.4431 = +0.4405
+  SOURCE_A: manuscript_report.txt "BIAS_CORRECTED_SPECIALIZATION = 0.4405 (+0.6%)"
+  COMPUTED: 74.88363785905612 - 74.44309717338712 = +0.440540685669
+  PASS_FAIL: PASS
+
+CHECK: M5 CAUSAL_SPECIALIZATION
+  FORMULA: SC_MAE - L0_MAE = 76.4560 - 74.4431 = +2.0129
+  SOURCE_A: manuscript_report.txt "CAUSAL_SPECIALIZATION = 2.0129 (+2.7%)"
+  COMPUTED: 76.45596938274242 - 74.44309717338712 = +2.0128722093553
+  PASS_FAIL: PASS
+
+---- LD2011_DAILY ----
+
+CHECK: LD2011 L0 MICRO_MAE
+  SOURCE_A: master_results_table.csv → 5103.739196371269
+  SOURCE_B: evidence_pack.md "L0 (BL1_S4DR) MICRO_MAE = 5103.7392"
+  PASS_FAIL: PASS
+
+CHECK: LD2011 L4S MICRO_MAE
+  SOURCE_A: master_results_table.csv → 5033.036193220672
+  SOURCE_B: evidence_pack.md "L4S (cross-fit) MICRO_MAE = 5033.0362"
+  PASS_FAIL: PASS
+
+CHECK: LD2011 L5 MICRO_MAE
+  SOURCE_A: master_results_table.csv → 1956.8317177950155
+  SOURCE_B: evidence_pack.md "L5 (oracle) MICRO_MAE = 1956.8317"
+  PASS_FAIL: PASS
+
+CHECK: LD2011 SC MICRO_MAE
+  SOURCE_A: master_results_table.csv → 5078.979184604507
+  SOURCE_B: evidence_pack.md "SC (M6_PRED) MICRO_MAE = 5078.9792"
+  PASS_FAIL: PASS
+
+CHECK: LD2011 BIAS_CORRECTED_SPECIALIZATION
+  FORMULA: L4S_MAE - L0_MAE = 5033.0362 - 5103.7392 = -70.703
+  SOURCE_A: manuscript_report.txt "BIAS_CORRECTED_SPECIALIZATION = -70.7030 (-1.4%)"
+  COMPUTED: 5033.036193220672 - 5103.739196371269 = -70.703003150597
+  PASS_FAIL: PASS
+
+CHECK: LD2011 CAUSAL_SPECIALIZATION
+  FORMULA: SC_MAE - L0_MAE = 5078.9792 - 5103.7392 = -24.760
+  SOURCE_A: manuscript_report.txt "CAUSAL_SPECIALIZATION = -24.7600 (-0.5%)"
+  COMPUTED: 5078.979184604507 - 5103.739196371269 = -24.760011766762
+  PASS_FAIL: PASS
+
+CHECK: LD2011 CAPTURE_RATIO_CORRECTED
+  FORMULA: |CAUSAL| / |BIAS_CORRECTED| = 24.760 / 70.703 = 0.3502
+  SOURCE_A: manuscript_report.txt "CAPTURE_RATIO_CORRECTED = 0.3502 (+35.0%)"
+  COMPUTED: 24.760011766762 / 70.703003150597 = 0.35019...
+  PASS_FAIL: PASS
+
+---- WIKI_DAILY ----
+
+CHECK: Wiki L0 MICRO_MAE
+  SOURCE_A: master_results_table.csv → 458.2723129864891
+  SOURCE_B: evidence_pack.md "L0 | 458.2723 | +0.0000"
+  SOURCE_C: wiki_daily/run_manifest.json "MAE_L0": 458.2723129864891
+  PASS_FAIL: PASS
+
+CHECK: Wiki L4 MICRO_MAE
+  SOURCE_A: master_results_table.csv → 411.32472410664866
+  SOURCE_B: evidence_pack.md "L4 | 411.3247 | -46.9476"
+  COMPUTED_dMAE: 411.3247 - 458.2723 = -46.9476 ✓
+  PASS_FAIL: PASS
+
+CHECK: Wiki L4S MICRO_MAE
+  SOURCE_A: master_results_table.csv → 537.1133610005775
+  SOURCE_B: evidence_pack.md "L4S | 537.1134 | +78.8410"
+  COMPUTED_dMAE: 537.1134 - 458.2723 = +78.8411 (rounding) ✓
+  PASS_FAIL: PASS
+
+CHECK: Wiki L5 MICRO_MAE
+  SOURCE_A: master_results_table.csv → 235.14069504908306
+  SOURCE_B: evidence_pack.md "L5 | 235.1407 | -223.1316"
+  PASS_FAIL: PASS
+
+CHECK: Wiki SC MICRO_MAE
+  SOURCE_A: master_results_table.csv → 498.83119299416575
+  SOURCE_B: evidence_pack.md "SC | 498.8312 | +40.5589"
+  PASS_FAIL: PASS
+
+CHECK: Wiki LIBRARY_RETROSPECTIVE_HEADROOM
+  FORMULA: L5_MAE - L0_MAE = 235.1407 - 458.2723 = -223.1316
+  SOURCE_A: run_manifest.json "LIBRARY_RETROSPECTIVE_HEADROOM": -223.13161793740605
+  SOURCE_B: evidence_pack.md "-223.1316 (-48.69% of L0)"
+  PERCENT: -223.1316 / 458.2723 = -48.69% ✓
+  PASS_FAIL: PASS
+
+CHECK: Wiki E1_INFLATION
+  CONDITION: d4 < 0 AND (d4s >= 0 OR |d4| >= 3*|d4s|)
+  VALUES: d4=-46.9476, d4s=+78.8410
+  d4 < 0 ✓; d4s >= 0 ✓ → CONFIRMADA
+  SOURCE_A: run_manifest.json "E1_INFLATION": "CONFIRMADA"
+  PASS_FAIL: PASS
+
+CHECK: Wiki L4S_SELECTION_STABILITY
+  SOURCE_A: run_manifest.json "L4S_SELECTION_STABILITY": 0.23333333333333334
+  SOURCE_B: evidence_pack.md "SELECTION_STABILITY=23.3% < 60%"
+  23.3% = 0.2333 ✓
+  PASS_FAIL: PASS
+
+========================================================================
+SECTION 2: WILCOXON SIGN CONVENTION AUDIT
+========================================================================
+
+CANONICAL: RBC < 0 → L0 favorable; RBC > 0 → comparator favorable
+FORMULA: RBC = (W_plus - W_minus) / (W_plus + W_minus)
+  where W_plus = sum of ranks where d_i = MAE(L0,i)-MAE(comparator,i) > 0
+
+IMPLEMENTATION AUDIT:
+  compute_manuscript_measurements.py (M5, LD2011):
+    r = (pos_ranks - neg_ranks) / total_r
+    pos_ranks = sum of ranks where d > 0 (comparator better) = W_plus
+    neg_ranks = sum of ranks where d < 0 (L0 better) = W_minus
+    r = (W_plus - W_minus)/(W_plus + W_minus) ← CANONICAL ✓
+    Status: CORRECT
+
+  run_mda2_wiki_daily.py (Wiki) — BEFORE CORRECTION:
+    rbc = 1 - (4 * stat) / (n * (n + 1))
+    where stat = scipy min(W_plus, W_minus)
+    → gives (W_minus - W_plus)/(W_plus + W_minus) when L0 favorable
+    → positive when L0 favorable ← WRONG SIGN
+
+  run_mda2_wiki_daily.py (Wiki) — AFTER CORRECTION:
+    w_plus  = sum of ranks where d > 0
+    w_minus = sum of ranks where d < 0
+    rbc = (w_plus - w_minus) / (w_plus + w_minus)
+    Status: CORRECTED ✓
+
+STATISTICAL_RESULT_CLASS = SIGN_CONVENTION_DOCUMENTARY_CORRECTION
+
+Changes applied:
+  wiki_daily/statistical_tests.csv:
+    L0_vs_B2_THETA RANK_BISERIAL: +0.2935 → -0.2935 (sign only)
+    L0_vs_B1_ETS   RANK_BISERIAL: +0.5696 → -0.5696 (sign only)
+  manuscript_data/statistical_tests.csv: same two rows
+  wiki_daily/run_manifest.json: same two fields
+  manuscript_data/wilcoxon_tests.csv: two Wiki rows ADDED (with correct sign)
+  run_mda2_wiki_daily.py: formula corrected
+
+Unchanged:
+  STATISTIC (W) values: UNCHANGED
+  P_VALUES: UNCHANGED
+  |RBC| magnitudes: UNCHANGED
+  DIRECTION labels: UNCHANGED (still L0_FAVORABLE)
+  All forecast metrics: UNCHANGED
+  All MAE/RMSE/sMAPE values: UNCHANGED
+
+MATHEMATICAL VERIFICATION:
+  Wiki L0 vs Theta: stat=15950, n=300
+    W_plus  = 15950  (L0 favorable → W_plus is the smaller)
+    W_minus = 45150 - 15950 = 29200
+    canonical RBC = (15950 - 29200) / 45150 = -13250/45150 = -0.2935 ✓
+    |RBC|: 1-4*15950/90300 = 0.2935 ✓ (magnitude preserved)
+
+  Wiki L0 vs ETS: stat=9717, n=300
+    W_plus  = 9717
+    W_minus = 45150 - 9717 = 35433
+    canonical RBC = (9717 - 35433) / 45150 = -25716/45150 = -0.5695 ✓
+
+========================================================================
+SECTION 3: METHOD NOMENCLATURE AUDIT
+========================================================================
+
+B0 = SEASONAL_NAIVE_7     — Labels in CSVs: "B0" ✓
+B1 = ETS                  — Labels in CSVs: "B1" ✓
+B2 = THETA                — Labels in CSVs: "B2" ✓
+B3 = MSTL_AutoARIMA       — Labels in CSVs: "B3" ✓
+     (MSTL+AutoARIMA; NOT simply "ARIMA"; TBATS was computationally prohibitive)
+L0 = BL1_S4DR             — Labels in CSVs: "L0" ✓
+L1 = UNIFORM_MEAN_12      — Labels in CSVs: "L1" ✓
+L2 = MEDIAN_12            — Labels in CSVs: "L2" ✓
+L3 = BEST_GLOBAL_RETRO    — Labels in CSVs: "L3" ✓
+L4 = BEST_STATIC_RETRO    — Labels in CSVs: "L4" ✓
+L4S = BEST_STATIC_SPLIT   — Labels in CSVs: "L4S" ✓
+L5 = PER_ORIGIN_ORACLE    — Labels in CSVs: "L5" ✓
+SC = STATIC_CAUSAL_SELECTOR — Labels in CSVs: "SC" ✓
+
+B3 AS "ARIMA" REVIEWER-FACING USES: None found in .md/.csv/.json ✓
+B3_METHOD_CANONICAL = MSTL_AutoARIMA (confirmed in run_s4dr_public_firetest.py)
+
+========================================================================
+SECTION 4: PREREGISTRATION CHRONOLOGY AUDIT
+========================================================================
+
+CANONICAL CHRONOLOGY:
+  PRIMARY_PREREGISTERED_FIRETEST = M5_STORE_DEPT + LD2011_DAILY
+  GO_NOGO_RESULT = NO_GO
+  THEN: MDA-2_THIRD_DOMAIN_WIKI = PROSPECTIVELY_SPECIFIED_POST_FIRETEST_REPLICATION
+
+FORBIDDEN CLAIMS:
+  "the three datasets were preregistered" → NOT FOUND ✓
+  "pre-registered three-domain" → NOT FOUND ✓
+  "three-domain preregistered" → NOT FOUND ✓
+
+CORRECT WORDING FOUND:
+  evidence_pack.md: "MDA-2 was prospectively specified after FIRETEST_2 and before
+                     inspection of WIKI_DAILY results." ✓
+
+STATUS: CHRONOLOGY_CLEAN ✓
+
+========================================================================
+SECTION 5: DELTA SIGN CONVENTION AUDIT
+========================================================================
+
+Convention: dMAE(method) = MAE_method - MAE_L0
+  negative = method favorable vs L0
+
+headroom_ladder.csv dMAE column verification (spot-check):
+  M5 L0:  dMAE=0.0000 ✓
+  M5 L4:  dMAE=-2.5266 (L4 better) ✓ [master: 71.92-74.44=-2.52]
+  M5 L5:  dMAE=-41.5278 (oracle much better) ✓
+  Wiki L4: dMAE=-46.9476 (L4 better) ✓
+  Wiki L4S: dMAE=+78.8410 (L4S worse — inflated) ✓
+  LD2011 B3: dMAE=-229.1571 (B3 better than L0 on LD2011) ✓
+
+per_series_deltas.csv column naming:
+  dMAE_X_vs_L0 = MAE_X - MAE_L0 ✓ (consistent with canonical dMAE convention)
+
+========================================================================
+AUDIT RESULT
+========================================================================
+
+ALL_CHECKS_PASS = TRUE
+
+EVIDENCE_PACK_CONSISTENCY = PASS
+WILCOXON_SIGN_CORRECTION = APPLIED (Case A: sign-only, no magnitude change)
+METHOD_NOMENCLATURE = PASS
+CHRONOLOGY = PASS
+DELTA_CONVENTION = PASS
+
+FORECASTS_RERUN = FALSE
+FORECAST_VALUES_CHANGED = FALSE
+FORECAST_METRICS_CHANGED = FALSE
+GO_NOGO_CHANGED = FALSE
+E1_E5_CHANGED = FALSE
+THIRD_DOMAIN_PATTERN_CHANGED = FALSE
+
+========================================================================

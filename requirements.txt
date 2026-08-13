@@ -1,0 +1,12 @@
+# Core dependencies for S4DR benchmark runners
+numpy>=1.24
+pandas>=2.0
+scipy>=1.11
+statsforecast>=1.7
+datasetsforecast>=0.0.8
+
+# For Wikipedia runner
+requests>=2.28
+
+# Testing
+pytest>=7.0

@@ -1,0 +1,313 @@
+{
+  "ADDENDUM_ID": "MDA-2_THIRD_DOMAIN_WIKI",
+  "ADDENDUM_TYPE": "PROSPECTIVELY_SPECIFIED_POST_FIRETEST_REPLICATION",
+  "MDA2_EXECUTION_SHA": "24adff6",
+  "SCIENTIFIC_CONFIGURATION_ATTRIBUTION_SHA": "67851d3",
+  "TIMESTAMP_START": "2026-08-13T03:24:54",
+  "DATASET": "kaggle_web_traffic",
+  "ZENODO_RECORD": "4656080",
+  "SOURCE_URL": "https://zenodo.org/records/4656080/files/kaggle_web_traffic_dataset_with_missing_values.zip?download=1",
+  "DATASET_VARIANT": "with_missing_values",
+  "RAW_SHA256": "44e10fc187475f673e2aac837f5f54cf32333fed25222d006f287355ec8699a9",
+  "RAW_FILE_SIZE_BYTES": 145485324,
+  "DOWNLOAD_TIMESTAMP": "2026-08-13T03:24:54",
+  "TOTAL_RAW_SERIES": 145063,
+  "DATASET_START": "2015-07-01",
+  "DATASET_END": "2017-09-10",
+  "FIRST_EVALUATION_ORIGIN": "2017-06-11",
+  "LAST_EVALUATION_ORIGIN": "2017-08-27",
+  "EVAL_ORIGINS": [
+    "2017-06-11",
+    "2017-06-18",
+    "2017-06-25",
+    "2017-07-02",
+    "2017-07-09",
+    "2017-07-16",
+    "2017-07-23",
+    "2017-07-30",
+    "2017-08-06",
+    "2017-08-13",
+    "2017-08-20",
+    "2017-08-27"
+  ],
+  "CALIB_ORIGINS": [
+    "2017-05-21",
+    "2017-05-28",
+    "2017-06-04"
+  ],
+  "MIN_HISTORY_DAYS": 700,
+  "ELIGIBILITY_MEDIAN_THRESHOLD": 100,
+  "ELIGIBILITY_MEDIAN_WINDOW": "PRE_EVALUATION_ONLY",
+  "ELIGIBILITY_MISSING_RULE": "PRE_EVALUATION_HISTORY_COMPLETE",
+  "ELIGIBLE_SERIES_COUNT": 69044,
+  "SAMPLING_RNG": "PCG64",
+  "SAMPLING_SEED": 42,
+  "SAMPLING_REPLACE": false,
+  "ELIGIBLE_SORT_ORDER": "lexical_UTF8",
+  "SAMPLED_N": 300,
+  "N_EVAL_ORIGINS": 12,
+  "HORIZON": 14,
+  "H1": "1-7",
+  "H2": "8-14",
+  "PRIMARY_SELECTION_LOSS": "MAE",
+  "SC_MIN_PRIOR": 30,
+  "SC_OBSERVABILITY_RULE": "TargetDate < CurrentOrigin",
+  "SC_WARMUP_K": 3,
+  "PACKAGE_VERSIONS": {
+    "python": "3.14.3",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "statsforecast": "2.1.1",
+    "scipy": "1.18.0"
+  },
+  "METRICS": [
+    "MAE",
+    "RMSE",
+    "sMAPE",
+    "WAPE",
+    "MedAE",
+    "P90AE",
+    "SIGNED_BIAS"
+  ],
+  "E1_DEFINITION": "d4<0 AND (d4s>=0 OR |d4|>=3|d4s|)",
+  "E2_DEFINITION": "SELECTION_STABILITY < 60%",
+  "E3_DEFINITION": "CAPTURE_RATIO_CORRECTED <= 0.50 OR NOT_DEFINED",
+  "E4_DEFINITION": "|dMAE_L5| > 0.40 * MAE_L0",
+  "E5_DEFINITION": "LY_DOM AND LY_SAME_BUCKET NOT in top-3 standalone MAE",
+  "THIRD_DOMAIN_PATTERN_RULE": "4/4 E1-E4=REPLICATES; 2-3/4=PARTIALLY; 0-1/4=CONTRADICTS",
+  "GO_NOGO_REEVALUATED": false,
+  "PAPER_DIRECTION_CHANGED": false,
+  "ATM_DATA_USED": false,
+  "FINAL_HOLDOUT_OPENED": false,
+  "STATUS": "COMPLETE",
+  "TIMESTAMP_END": "2026-08-13T03:33:14",
+  "PANEL_SHA256": "5b825cb91f98c2ff3c02b9e921d4a77f24ec8f22cac5852bbe7f1b3b5ca23da9",
+  "N_FORECAST_ROWS_TOTAL": 50400,
+  "N_FORECAST_ROWS_COMMON": 50221,
+  "N_MISSING_TARGET_ROWS_EXCLUDED": 179,
+  "INTEGRITY_GATES": {
+    "G1_PANEL_PERSISTED": "PASS",
+    "G2_COMMON_FORECAST_UNIVERSE": "PASS",
+    "G3_IDENTICAL_TARGETS": "PASS",
+    "G4_TARGETS_RAW": "PASS",
+    "G5_NO_NAN_INF_COMMON_UNIVERSE": "PASS",
+    "G6_EXACT_12_STRUCTURAL_COLUMNS": "PASS",
+    "G7_EXACT_CANONICAL_CANDIDATE_NAMES": "PASS",
+    "G8_NO_ML_COLUMN_PRESENCE": "PASS",
+    "G9_DUPLICATE_STRING_KEYS_ZERO": "PASS",
+    "G10_SC_OBSERVABILITY": "PASS",
+    "G11_CAUSALITY_SPOTCHECK": "PASS",
+    "G12_NO_PROTOCOL_DRIFT": "PASS",
+    "GLOBAL_PHANTOM_GATE": "PASS"
+  },
+  "GLOBAL_PHANTOM_GATE": "PASS",
+  "N_CANDIDATE_SERIES_PAIRS": 3600,
+  "N_ZERO_VARIANCE_PAIRS": 0,
+  "SC_AVAILABLE_PRIOR_ROWS_AT_FIRST_EVAL_ORIGIN": 33,
+  "L4S_SELECTION_STABILITY": 0.23333333333333334,
+  "BEST_L3_CANDIDATE": "T7",
+  "ATTRIBUTION_ARITHMETIC_CHECK": "PASS",
+  "CAUSALITY_SPOTCHECK": {
+    "CAUSALITY_TOLERANCE": 1e-06,
+    "RESULT": "PASS",
+    "CHECKS": [
+      {
+        "sid": "T120828",
+        "origin": "2017-06-11",
+        "max_abs_diff": 0.0,
+        "tolerance": 1e-06,
+        "status": "PASS"
+      },
+      {
+        "sid": "T120828",
+        "origin": "2017-07-23",
+        "max_abs_diff": 0.0,
+        "tolerance": 1e-06,
+        "status": "PASS"
+      },
+      {
+        "sid": "T74571",
+        "origin": "2017-06-11",
+        "max_abs_diff": 0.0,
+        "tolerance": 1e-06,
+        "status": "PASS"
+      },
+      {
+        "sid": "T74571",
+        "origin": "2017-07-23",
+        "max_abs_diff": 0.0,
+        "tolerance": 1e-06,
+        "status": "PASS"
+      },
+      {
+        "sid": "T76171",
+        "origin": "2017-06-11",
+        "max_abs_diff": 0.0,
+        "tolerance": 1e-06,
+        "status": "PASS"
+      },
+      {
+        "sid": "T76171",
+        "origin": "2017-07-23",
+        "max_abs_diff": 0.0,
+        "tolerance": 1e-06,
+        "status": "PASS"
+      }
+    ]
+  },
+  "WILCOXON_L0_VS_THETA": {
+    "N_TOTAL": 300,
+    "N_NONZERO": 300,
+    "STATISTIC": 15950.0,
+    "P_VALUE": 1.0546516473403208e-05,
+    "RANK_BISERIAL": -0.29346622369878184,
+    "DIRECTION": "L0_FAVORABLE"
+  },
+  "WILCOXON_L0_VS_ETS": {
+    "N_TOTAL": 300,
+    "N_NONZERO": 300,
+    "STATISTIC": 9717.0,
+    "P_VALUE": 1.2242228811386723e-17,
+    "RANK_BISERIAL": -0.5695681063122924,
+    "DIRECTION": "L0_FAVORABLE"
+  },
+  "STATISTICAL_TEST_DECLARATION": "Estos tests son descriptivos para el manuscrito; el criterio de decisi\u00f3n del proyecto fue el GO/NO_GO pre-registrado ya aplicado, y ning\u00fan p-value lo modifica.",
+  "EXPECTATIONS": {
+    "E1_INFLATION": "CONFIRMADA",
+    "E1_JUSTIFICATION": "d4=-46.9476<0 and (d4s=78.8410>=0 or |d4|>=3|d4s|)",
+    "E2_STABILITY": "CONFIRMADA",
+    "E2_JUSTIFICATION": "SELECTION_STABILITY=23.3% < 60%",
+    "E3_CAPTURE": "CONFIRMADA",
+    "E3_JUSTIFICATION": "CAPTURE_RATIO=NOT_DEFINED (d4s=78.8410, dsc=40.5589)",
+    "CAPTURE_RATIO_CORRECTED": "NOT_DEFINED",
+    "E4_ORACLE": "CONFIRMADA",
+    "E4_JUSTIFICATION": "|dMAE_L5|=223.1316 > 0.4*MAE_L0=183.3089",
+    "E5_LY": "CONFIRMADA",
+    "E5_JUSTIFICATION": "Neither LY_DOM nor LY_SAME_BUCKET in top-3 MAE candidates: ['T7', 'ROLLING3M', 'T14']",
+    "THIRD_DOMAIN_PATTERN": "REPLICATES",
+    "N_CONFIRMADAS_E1_E4": 4,
+    "D4_MAE": -46.94758887984045,
+    "D4S_MAE": 78.84104801408836,
+    "DSC_MAE": 40.558880007676635,
+    "D5_MAE": -223.13161793740605,
+    "MAE_L0": 458.2723129864891,
+    "MAE_L4": 411.32472410664866,
+    "MAE_L4S": 537.1133610005775,
+    "MAE_SC": 498.83119299416575,
+    "MAE_L5": 235.14069504908306
+  },
+  "THIRD_DOMAIN_PATTERN": "REPLICATES",
+  "HEADROOM": {
+    "LIBRARY_RETROSPECTIVE_HEADROOM": -223.13161793740605,
+    "STATIC_RETROSPECTIVE_SPECIALIZATION": -46.94758887984045,
+    "BIAS_CORRECTED_SPECIALIZATION": 78.84104801408836,
+    "CAUSAL_SPECIALIZATION": 40.558880007676635,
+    "CAPTURE_RATIO_CORRECTED": "NOT_DEFINED"
+  },
+  "METHOD_METRICS": {
+    "B0": {
+      "MICRO_MAE": 564.264471038012,
+      "MACRO_MAE": 562.9275,
+      "H1_MAE": 536.7953975395151,
+      "H2_MAE": 591.7477692797961
+    },
+    "B1": {
+      "MICRO_MAE": 702.2182476268787,
+      "MACRO_MAE": 700.5244155372599,
+      "H1_MAE": 659.0977018339175,
+      "H2_MAE": 745.3611232117179
+    },
+    "B2": {
+      "MICRO_MAE": 526.0677939553784,
+      "MACRO_MAE": 524.8919167897856,
+      "H1_MAE": 489.94648104265855,
+      "H2_MAE": 562.207812136895
+    },
+    "B3": {
+      "MICRO_MAE": 683.5350427662804,
+      "MACRO_MAE": 682.0274153843646,
+      "H1_MAE": 630.2778200294298,
+      "H2_MAE": 736.8198445302017
+    },
+    "L0": {
+      "MICRO_MAE": 458.2723129864891,
+      "MACRO_MAE": 457.29763062306216,
+      "H1_MAE": 439.0814188566836,
+      "H2_MAE": 477.4731450394818
+    },
+    "L1": {
+      "MICRO_MAE": 575.5787213541315,
+      "MACRO_MAE": 574.6628211774133,
+      "H1_MAE": 573.5272810017452,
+      "H2_MAE": 577.6312240362093
+    },
+    "L2": {
+      "MICRO_MAE": 539.1094533338643,
+      "MACRO_MAE": 538.2353929636862,
+      "H1_MAE": 538.1155894989449,
+      "H2_MAE": 540.1038318369582
+    },
+    "L3": {
+      "MICRO_MAE": 515.003390139384,
+      "MACRO_MAE": 513.8734040805651,
+      "H1_MAE": 504.0093832635266,
+      "H2_MAE": 526.0030902151052
+    },
+    "L4": {
+      "MICRO_MAE": 411.32472410664866,
+      "MACRO_MAE": 410.3486808546146,
+      "H1_MAE": 402.0368043193853,
+      "H2_MAE": 420.6174536038082
+    },
+    "L4S": {
+      "MICRO_MAE": 537.1133610005775,
+      "MACRO_MAE": 535.9618245245307,
+      "H1_MAE": 526.569142055978,
+      "H2_MAE": 547.663040224267
+    },
+    "L5": {
+      "MICRO_MAE": 235.14069504908306,
+      "MACRO_MAE": 234.62192276516367,
+      "H1_MAE": 233.03738192658358,
+      "H2_MAE": 237.2450973633684
+    },
+    "SC": {
+      "MICRO_MAE": 498.83119299416575,
+      "MACRO_MAE": 497.9507046839345,
+      "H1_MAE": 471.4102008026436,
+      "H2_MAE": 526.266385030274
+    }
+  },
+  "OUTPUT_FILE_SHA256": {
+    "wiki_eligible_series.csv": "c9edab01161c89e04a0ab20f8efd305a6b711696bd3d0b4b60a905a7e4b87bf0",
+    "wiki_sampled_series.csv": "df2f83775ee2113da5b6d71e0b7dcba33100bd0c1918244d94b727152aeb49d7",
+    "forecast_panel.csv": "5b825cb91f98c2ff3c02b9e921d4a77f24ec8f22cac5852bbe7f1b3b5ca23da9",
+    "integrity_gates.csv": "0b684789cddaebd37b9208fbc0a18e45c0e5ef0cf99e6af0f8f35b575cf5f112",
+    "causality_spotcheck.csv": "5bd96d4591ed60b6d07e1aed252ab3c36b3783c188a8243849ad9de58d0cdf9b",
+    "global_metrics.csv": "6919f195489288f8c04be31ad22331c87d618ca9fcdf830acae17e5664cd74ed",
+    "per_series_metrics.csv": "c5c7c0b98b50f4f059ca1390abc7fda9d3997d30c247bd7075e9894b9dc18c79",
+    "method_vs_theta_deltas.csv": "e6954ade49da7625dee2733c8867f790c3307aea7502eaf852b534b17dcb3acf",
+    "method_vs_ets_deltas.csv": "8087737a442495b136f078ed02d242a4577ffa5bffae8084980dc3e03161e9db",
+    "sc_vs_l0_deltas.csv": "3f5595bcdb3ccd937e3fe7ba12799c5127669174ac54521c899fa8f551bd3f01",
+    "headroom_ladder.csv": "595eef9c09e2d5b54bd3ab367417e0f430b1491bad2ccd43a5d50459c02c1e69",
+    "l4s_split_details.csv": "370f74e6698f6e7f595f9d55dc1eb7e088ec56949efe1518ff8a18d2602512fe",
+    "candidate_standalone.csv": "ba02538b095426775918d0de07cb66bb4958791093c4c6b040fd08727a71060d",
+    "candidate_attribution_sc.csv": "ae9a771703785f1f205dc1d681ba81b07f15ec9d973b60262b4674e7bf19a87f",
+    "statistical_tests.csv": "08acf02ffd7dd25f13e0dfc59c3c6e4a5b225f3090780d74a449e60706961309",
+    "raw_source_manifest.json": "f105238ec83f6f53af5468f55686223ac55556caee58cfd218a244f577ec9c4b"
+  },
+  "MANUSCRIPT_DATA_UPDATED": true,
+  "PUBLISHABLE_SCOPE": [
+    "M5_STORE_DEPT",
+    "LD2011_DAILY",
+    "WIKI_DAILY"
+  ],
+  "EXISTING_M5_VALUES_MODIFIED": false,
+  "EXISTING_LD_VALUES_MODIFIED": false,
+  "GO_NOGO_RESULT": "NO_GO",
+  "PAPER_DIRECTION": "METHODOLOGICAL_PAPER",
+  "TUNING_PERFORMED": false,
+  "MODEL_MODIFIED": false,
+  "SELECTOR_MODIFIED": false,
+  "SAMPLE_ITERATED": false
+}
