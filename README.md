@@ -1,4 +1,4 @@
-# S4DR: Structural Candidate Library for Daily Forecasting
+# Almanac: Structural Candidate Library for Daily Forecasting
 
 Public reproducibility repository for:
 
