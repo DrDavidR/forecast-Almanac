@@ -15,7 +15,7 @@ Public reproducibility repository for:
 
 This repository provides:
 
-1. **The S4DR model** (`src/s4dr/`) — a structural 12-candidate ensemble for daily time series forecasting. All candidates are interpretable structural formulas; no ML models.
+1. **The Almanac model** (`src/s4dr/`) — a structural 12-candidate ensemble for daily time series forecasting. All candidates are interpretable structural formulas; no ML models.
 
 2. **Benchmark runners** (`reference/public_benchmark_firetest/`) — scripts that reproduce the three-domain evaluation on M5_STORE_DEPT, LD2011_DAILY, and Wikipedia web traffic.
 
