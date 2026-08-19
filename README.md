@@ -5,7 +5,7 @@ Public reproducibility repository for:
 > "Specialization Headroom in Structural Candidate Libraries:
 >  A Three-Domain Empirical Analysis of Selector Limitations"
 
-**Repository:** https://github.com/DrDavidR/forecast-S4DR
+**Repository:** https://github.com/DrDavidR/forecast-Almanac
 
 **Preprint:** arXiv (forthcoming)
 
